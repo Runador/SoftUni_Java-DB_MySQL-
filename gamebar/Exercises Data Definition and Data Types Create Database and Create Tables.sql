@@ -1,0 +1,15 @@
+USE minions;
+
+CREATE TABLE minions (
+  id INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50),
+  age INT
+);
+
+CREATE TABLE towns (
+	town_id INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)
+);
+
+ALTER TABLE towns
+RENAME COLUMN town_id TO id;
