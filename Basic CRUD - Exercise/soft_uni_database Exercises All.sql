@@ -72,6 +72,11 @@ AS `full_name`, job_title
 FROM employees;
 SELECT * FROM v_employees_job_titles2;
 
+CREATE OR REPLACE VIEW `v_employees_job_titles` AS
+SELECT concat_ws(' ', first_name, IFNULL(middle_name, ''), last_name) AS `full_name`, job_title
+FROM employees;
+SELECT * FROM `v_employees_job_titles`;
+
 
 SELECT DISTINCT job_title
 FROM employees
@@ -94,15 +99,14 @@ LIMIT 7;
 
 SELECT * FROM employees;
 
+
 UPDATE employees
 SET salary = salary * 1.12
-WHERE job_title IN ('Engineering', 'Tool Design', 'Marketing Specialist', 
-'Marketing Assistant', 'Marketing Manager', 'Information Services');
+WHERE department_id IN(1, 2, 4, 11);
 
-CREATE VIEW `Salary2` AS
-SELECT salary AS `Salary` FROM employees;
+CREATE OR REPLACE VIEW `Salaries` AS
+SELECT salary AS `Salary`
+FROM employees;
+SELECT * FROM `Salaries`;
 
-SELECT * FROM `Salary2`;
-
-
-
+ 
