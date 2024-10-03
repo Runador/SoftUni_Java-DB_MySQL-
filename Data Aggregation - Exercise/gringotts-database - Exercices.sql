@@ -60,18 +60,17 @@ FROM wizzard_deposits
 GROUP BY age_group
 ORDER BY age_group;
 
-SELECT * FROM gringotts.wizzard_deposits;
-
 SELECT LEFT(first_name, 1) as `first_letter`
 FROM wizzard_deposits
 GROUP BY first_letter, deposit_group
 HAVING deposit_group = 'Troll Chest'
 ORDER BY first_letter;
 
-SELECT deposit_group, is_deposit_expired, avg(deposit_interest) `average_interest`
+SELECT deposit_group, is_deposit_expired, AVG(deposit_interest) as average_interest
 FROM wizzard_deposits
-GROUP BY deposit_group, average_interest
-ORDER BY deposit_group DESC;
+WHERE deposit_start_date > '1985-01-01'
+GROUP BY deposit_group, is_deposit_expired
+ORDER BY deposit_group DESC, is_deposit_expired;
 
 
 
