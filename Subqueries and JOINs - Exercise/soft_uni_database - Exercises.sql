@@ -87,7 +87,3 @@ FROM employees e
 ORDER BY min_average_salary
 LIMIT 1;
 
-
-
-
-
